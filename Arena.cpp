@@ -1,0 +1,60 @@
+#include <iostream>
+#include "Warrior.h"
+#include "Mage.h"
+#include "Arena.h"
+
+Arena::Arena(){
+  this->turno = 0;
+  this->escolherPersonagem();
+}
+
+void Arena::simularTurno() {
+  this->turno++;
+
+  this->personagem->opcoes();
+  this->validarEncerramento();
+}
+
+void Arena::escolherPersonagem() {
+  int opcao;
+  
+  std::cout << "\nEscolha um personagem: \n";
+  std::cout << "1 - Guerreiro: \n";
+  std::cout << "2 - Mago: \n";
+  std::cin >> opcao;
+  switch (opcao)
+  {
+  case 1:
+    this->personagem = new Warrior(100, 10, 10);
+    this->inimigo = new Mage(100, 10, 10);
+    break;
+
+  case 2:
+    this->personagem = new Mage(100, 10, 10);
+    this->inimigo = new Warrior(100, 10, 10);
+    break;
+  
+  default:
+    break;
+  }
+}
+
+void Arena::validarEncerramento() {
+  if (this->inimigo->getVida() <= 0) {
+    std::cout << "Você venceu!\n";
+    this->acabou = true;
+  }
+
+  if (this->personagem->getVida() <= 0) {
+    std::cout << "Você perdeu.\n";
+    this->acabou = true;
+  }
+}
+
+int Arena::getTurno() {
+  return this->turno;
+}
+
+bool Arena::getAcabou() {
+  return this->acabou;
+}
