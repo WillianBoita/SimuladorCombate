@@ -4,13 +4,12 @@
 #define Mage_H
 
 class Mage : public Character {
-  private:
-    bool regenerando;
-    int turnosRegenerando;
   public:
     Mage(int vida, int ataque, int cura);
     void regenerar();
-    void opcoes(Character *inimigo);
+    void opcoes(Character *inimigo) override;
+    void opcaoInimigo(Character *inimigo) override;
+    std::string getEspecialAtivo() override;
 };
 
 #endif

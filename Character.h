@@ -1,3 +1,5 @@
+#include <iostream>
+
 #ifndef Character_H
 #define Character_H
 
@@ -7,13 +9,18 @@ class Character {
     int ataque;
     int cura;
   public:
+    bool especial;
+    int turnosEspecial;
     Character(int vida, int ataque, int cura);
 
     void atacar(Character *inimigo);
     void defender(int danoLevado);
     void curar(int cura);
 
-    void opcoes();
+    virtual void opcoes(Character *inimigo) = 0;
+    virtual void opcaoInimigo(Character *inimigo) = 0;
+    virtual std::string getEspecialAtivo() = 0;
+    int gerarOpcaoAleatoria();
 
     int getVida();
     int getAtaque();

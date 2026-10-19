@@ -11,7 +11,20 @@ Arena::Arena(){
 void Arena::simularTurno() {
   this->turno++;
 
-  this->personagem->opcoes();
+  std::cout << "Você:\n";
+  std::cout << "Vida: " << this->personagem->getVida() << "\n";
+  std::cout << "Dano: " << this->personagem->getAtaque() << "\n";
+  std::cout << "Cura: " << this->personagem->getCura() << "\n";
+  std::cout << "Habilidade: " << this->personagem->getEspecialAtivo() << "\n";
+  std::cout << "------------------------\n";
+  std::cout << "Inimigo:\n";
+  std::cout << "Vida: " << this->inimigo->getVida() << "\n";
+  std::cout << "Dano: " << this->inimigo->getAtaque() << "\n";
+  std::cout << "Cura: " << this->inimigo->getCura() << "\n";
+  std::cout << "Habilidade: " << this->inimigo->getEspecialAtivo() << "\n";
+
+  this->personagem->opcoes(this->inimigo);
+  this->inimigo->opcaoInimigo(this->personagem);
   this->validarEncerramento();
 }
 
@@ -19,8 +32,8 @@ void Arena::escolherPersonagem() {
   int opcao;
   
   std::cout << "\nEscolha um personagem: \n";
-  std::cout << "1 - Guerreiro: \n";
-  std::cout << "2 - Mago: \n";
+  std::cout << "1 - Guerreiro \n";
+  std::cout << "2 - Mago \n";
   std::cin >> opcao;
   switch (opcao)
   {
