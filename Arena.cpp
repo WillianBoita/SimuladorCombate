@@ -11,6 +11,13 @@ Arena::Arena(){
 void Arena::simularTurno() {
   this->turno++;
 
+  if (this->personagem == NULL || this->inimigo == NULL) {
+    std::cout << "Erro ao selecionar personagens.\n";
+    this->validarEncerramento();
+    return;
+  }
+  
+
   std::cout << "Você:\n";
   std::cout << "Vida: " << this->personagem->getVida() << "\n";
   std::cout << "Dano: " << this->personagem->getAtaque() << "\n";
@@ -48,19 +55,27 @@ void Arena::escolherPersonagem() {
     break;
   
   default:
+    std::cout << "Opção inválida.\n";
     break;
   }
 }
 
 void Arena::validarEncerramento() {
+  if (this->personagem == NULL || this->inimigo == NULL) {
+    this->acabou = true;
+    return;
+  }
+
   if (this->inimigo->getVida() <= 0) {
     std::cout << "Você venceu!\n";
     this->acabou = true;
+    return;
   }
 
   if (this->personagem->getVida() <= 0) {
     std::cout << "Você perdeu.\n";
     this->acabou = true;
+    return;
   }
 }
 

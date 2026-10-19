@@ -16,6 +16,7 @@ int main() {
       jogarNovamente = true;
     } else {
       jogarNovamente = false;
+      delete jogo;
     }
   }
   
