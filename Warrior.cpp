@@ -59,7 +59,8 @@ void Warrior::opcoes(Character *inimigo) {
 }
 
 void Warrior::opcaoInimigo(Character *inimigo) {
-  int opcao = !this->especial ? this->gerarOpcaoAleatoria() : 1;
+  int aleatorio = this->gerarOpcaoAleatoria();
+  int opcao = this->getVida() + this->getCura() >= this->getVidaMaxima() ? 1 : !this->especial ? aleatorio : 1;
   switch (opcao) {
   case 1:
     this->atacar(inimigo);

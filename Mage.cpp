@@ -3,6 +3,7 @@
 
 Mage::Mage(int vida, int ataque, int cura): Character::Character(vida, ataque, cura){
   this->especial = false;
+  this->turnosEspecial = 0;
 };
 
 Mage::~Mage() {};
@@ -58,9 +59,7 @@ void Mage::opcoes(Character *inimigo) {
 
 void Mage::opcaoInimigo(Character *inimigo) {
   int aleatorio = this->gerarOpcaoAleatoria();
-  int opcao = !this->especial ? 3 : aleatorio != 3 ? aleatorio : 2;
-  std::cout << "Especial: " << this->especial << "\n";
-  std::cout << "Opcão: " << opcao << "\n";
+  int opcao = this->getVida() + this->getCura() >= this->getVidaMaxima() ? 1 : !this->especial ? 3 : aleatorio != 3 ? aleatorio : 2;
 
   this->regenerar();
 

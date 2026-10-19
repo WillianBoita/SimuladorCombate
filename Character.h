@@ -8,6 +8,7 @@ class Character {
     int vida;
     int ataque;
     int cura;
+    int vidaMaxima;
   public:
     bool especial;
     int turnosEspecial;
@@ -24,6 +25,7 @@ class Character {
     int gerarOpcaoAleatoria();
 
     int getVida();
+    int getVidaMaxima();
     int getAtaque();
     int getCura();
 };

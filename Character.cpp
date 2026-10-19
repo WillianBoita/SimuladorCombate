@@ -12,6 +12,7 @@ Character::Character(int vida, int ataque, int cura) {
   this->vida = vida;
   this->ataque = ataque;
   this->cura = cura;
+  this->vidaMaxima = vida;
 }
 
 void Character::atacar(Character *inimigo){
@@ -23,6 +24,10 @@ void Character::defender(int danoLevado) {
 }
 
 void Character::curar(int cura) {
+  if (this->vida + cura > vidaMaxima) {
+    this->vida = vidaMaxima;
+  }
+  
   this->vida += cura;
 }
 
@@ -42,4 +47,8 @@ int Character::getAtaque(){
 
 int Character::getCura(){
   return this->cura;
+}
+
+int Character::getVidaMaxima(){
+  return this->vidaMaxima;
 }

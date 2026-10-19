@@ -49,13 +49,13 @@ void Arena::escolherPersonagem() {
   switch (opcao)
   {
   case 1:
-    this->personagem = new Warrior(100, 10, 10);
-    this->inimigo = new Mage(100, 10, 10);
+    this->personagem = new Warrior(100, 15, 10);
+    this->inimigo = new Mage(70, 10, 20);
     break;
 
   case 2:
-    this->personagem = new Mage(100, 10, 10);
-    this->inimigo = new Warrior(100, 10, 10);
+    this->personagem = new Mage(70, 10, 20);
+    this->inimigo = new Warrior(100, 15, 10);
     break;
   
   default:
