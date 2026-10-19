@@ -34,14 +34,17 @@ void Mage::opcoes(Character *inimigo) {
   switch (opcao) {
   case 1:
     this->atacar(inimigo);
+    std::cout << "Você atacou o inimigo!\n";
     break;
 
   case 2:
     this->curar(this->getCura());
+    std::cout << "Você se curou!\n";
     break;
   
   case 3:
     this->especial = true;
+    std::cout << "Você ativou a habilidade especial!\n";
     break;
   
   default:
@@ -52,18 +55,27 @@ void Mage::opcoes(Character *inimigo) {
 }
 
 void Mage::opcaoInimigo(Character *inimigo) {
-  int opcao = !this->especial ? this->gerarOpcaoAleatoria() : 1;
+  int aleatorio = this->gerarOpcaoAleatoria();
+  int opcao = !this->especial ? 3 : aleatorio != 3 ? aleatorio : 2;
+  std::cout << "Especial: " << this->especial << "\n";
+  std::cout << "Opcão: " << opcao << "\n";
+
+  this->regenerar();
+
   switch (opcao) {
   case 1:
     this->atacar(inimigo);
+    std::cout << "Seu inimigo atacou!\n";
     break;
 
   case 2:
     this->curar(this->getCura());
+    std::cout << "Seu inimigo se curou!\n";
     break;
   
   case 3:
     this->especial = true;
+    std::cout << "Seu inimigo ativou a habilidade especial!\n";
     break;
   
   default:
