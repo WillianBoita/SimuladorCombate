@@ -13,6 +13,7 @@ class Arena {
 
   public:
     Arena();
+    ~Arena();
 
     void simularTurno();
     void validarEncerramento();

@@ -9,6 +9,7 @@ int main() {
       jogo->simularTurno();
     }
 
+    delete jogo;
     char opcao;
     std::cout << "o jogo acabou, deseja jogar novamente? (s/n)\n";
     std::cin >> opcao;
@@ -16,7 +17,6 @@ int main() {
       jogarNovamente = true;
     } else {
       jogarNovamente = false;
-      delete jogo;
     }
   }
   

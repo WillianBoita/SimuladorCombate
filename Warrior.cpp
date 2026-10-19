@@ -6,14 +6,16 @@ Warrior::Warrior(int vida, int ataque, int cura): Character::Character(vida, ata
   this->turnosEspecial = 0;
 };
 
+Warrior::~Warrior() {};
+
 void Warrior::atacar(Character *inimigo) {
   if (this->especial) {
     inimigo->defender(this->getAtaque() * 1.8);
+    this->turnosEspecial++;
     if (this->turnosEspecial > 1) {
       this->turnosEspecial = 0;
       this->especial = false;
     }
-    this->turnosEspecial++;
     
   } else {
     inimigo->defender(this->getAtaque());

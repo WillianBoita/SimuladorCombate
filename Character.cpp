@@ -2,6 +2,12 @@
 #include <iostream>
 #include <random>
 
+std::random_device rd;
+
+std::mt19937 gen(rd());
+
+std::uniform_int_distribution<int> distrib(1, 3);
+
 Character::Character(int vida, int ataque, int cura) {
   this->vida = vida;
   this->ataque = ataque;
@@ -21,15 +27,9 @@ void Character::curar(int cura) {
 }
 
 int Character::gerarOpcaoAleatoria() {
-    std::random_device rd;
+  int numero_aleatorio = distrib(gen);
 
-    std::mt19937 gen(rd());
-
-    std::uniform_int_distribution<int> distrib(1, 3);
-
-    int numero_aleatorio = distrib(gen);
-
-    return numero_aleatorio;
+  return numero_aleatorio;
 }
 
 int Character::getVida(){

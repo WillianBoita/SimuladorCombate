@@ -12,6 +12,7 @@ class Character {
     bool especial;
     int turnosEspecial;
     Character(int vida, int ataque, int cura);
+    virtual ~Character() {};
 
     void atacar(Character *inimigo);
     void defender(int danoLevado);

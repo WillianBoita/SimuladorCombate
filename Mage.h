@@ -6,6 +6,7 @@
 class Mage : public Character {
   public:
     Mage(int vida, int ataque, int cura);
+    ~Mage() override;
     void regenerar();
     void opcoes(Character *inimigo) override;
     void opcaoInimigo(Character *inimigo) override;

@@ -3,20 +3,23 @@
 #include "Mage.h"
 #include "Arena.h"
 
-Arena::Arena(){
-  this->turno = 0;
+Arena::Arena() : turno(0), acabou(false), personagem(nullptr), inimigo(nullptr) {
   this->escolherPersonagem();
 }
 
-void Arena::simularTurno() {
-  this->turno++;
+Arena::~Arena() {
+  delete this->inimigo;
+  delete this->personagem;
+}
 
-  if (this->personagem == NULL || this->inimigo == NULL) {
+void Arena::simularTurno() {
+  if (this->personagem == nullptr || this->inimigo == nullptr) {
     std::cout << "Erro ao selecionar personagens.\n";
-    this->validarEncerramento();
+    this->acabou = true;
     return;
   }
   
+  this->turno++;
 
   std::cout << "Você:\n";
   std::cout << "Vida: " << this->personagem->getVida() << "\n";
@@ -31,6 +34,7 @@ void Arena::simularTurno() {
   std::cout << "Habilidade: " << this->inimigo->getEspecialAtivo() << "\n";
 
   this->personagem->opcoes(this->inimigo);
+  this->validarEncerramento();
   this->inimigo->opcaoInimigo(this->personagem);
   this->validarEncerramento();
 }
@@ -61,7 +65,7 @@ void Arena::escolherPersonagem() {
 }
 
 void Arena::validarEncerramento() {
-  if (this->personagem == NULL || this->inimigo == NULL) {
+  if (this->personagem == nullptr || this->inimigo == nullptr) {
     this->acabou = true;
     return;
   }

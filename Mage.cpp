@@ -5,21 +5,23 @@ Mage::Mage(int vida, int ataque, int cura): Character::Character(vida, ataque, c
   this->especial = false;
 };
 
+Mage::~Mage() {};
+
 void Mage::regenerar(){
   if (this->especial) {
     this->curar(this->getCura() / 2);
+    this->turnosEspecial++;
   }
   if (this->turnosEspecial > 3) {
     this->turnosEspecial = 0;
     this->especial = false;
   }
-  this->turnosEspecial++;
 };
 
 std::string Mage::getEspecialAtivo(){
   std::string estaRegenerando = this->especial == false ? "False" : "True";
   return "Regenerando: " + estaRegenerando;
-}
+};
 
 void Mage::opcoes(Character *inimigo) {
   int opcao;
@@ -52,7 +54,7 @@ void Mage::opcoes(Character *inimigo) {
     this->curar(this->getCura());
     break;
   }
-}
+};
 
 void Mage::opcaoInimigo(Character *inimigo) {
   int aleatorio = this->gerarOpcaoAleatoria();
@@ -81,6 +83,4 @@ void Mage::opcaoInimigo(Character *inimigo) {
   default:
     break;
   }
-}
-
-
+};
