@@ -24,8 +24,9 @@ void Character::defender(int danoLevado) {
 }
 
 void Character::curar(int cura) {
-  if (this->vida + cura > vidaMaxima) {
-    this->vida = vidaMaxima;
+  if (this->vida + cura > this->vidaMaxima) {
+    this->vida = this->vidaMaxima;
+    return;
   }
   
   this->vida += cura;

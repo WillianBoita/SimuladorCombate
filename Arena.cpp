@@ -35,8 +35,10 @@ void Arena::simularTurno() {
 
   this->personagem->opcoes(this->inimigo);
   this->validarEncerramento();
-  this->inimigo->opcaoInimigo(this->personagem);
-  this->validarEncerramento();
+  if (!this->acabou) {
+    this->inimigo->opcaoInimigo(this->personagem);
+    this->validarEncerramento();
+  }
 }
 
 void Arena::escolherPersonagem() {
@@ -60,6 +62,7 @@ void Arena::escolherPersonagem() {
   
   default:
     std::cout << "Opção inválida.\n";
+    exit(1);
     break;
   }
 }

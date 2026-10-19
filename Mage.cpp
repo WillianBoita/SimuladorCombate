@@ -51,8 +51,8 @@ void Mage::opcoes(Character *inimigo) {
     break;
   
   default:
-    std::cout << "Opção inválida, curando por padrão...\n";
-    this->curar(this->getCura());
+    std::cout << "Opção inválida.\n";
+    exit(1);
     break;
   }
 };
